@@ -2,3 +2,9 @@ h1 {
   color: magenta;
   text-align: center;
 }
+.clickable {
+  cursor: pointer;
+  &:checked {
+    text-decoration: line-through;
+  }
+}

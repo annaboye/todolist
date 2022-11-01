@@ -4,11 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="/src/js/main.js" type="module"></script>
+    <script defer src="/src/js/main.js" type="module"></script>
     <link rel="stylesheet" href="sass/main.scss" />
     <title>Todo</title>
   </head>
-  <body>
-    <h1>Gör en todo-lista!</h1>
+    <h1>Todo-listan!</h1>
+    <div class="container">
+    <label for="additem"> Lägg till att göra här:</label>
+    <input type="text" id="additem" > 
+    <button type="button" id="btn-item">Lägg till</button>
+
+    <h2>Att göra:</h2>
+    <ul id="todolist">
+    </ul>
+    <h2>Avslutade:</h2>
+    <ul id="completed">
+
+    </ul>
+    </div>
   </body>
 </html>
