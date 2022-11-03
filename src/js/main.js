@@ -7,11 +7,15 @@ let theCompletedList = [];
 function addtolist() {
   let inTag = document.getElementById("additem");
   let newTask = inTag.value;
-  let newItemObject = new ListItem(newTask);
-  theList.push(newItemObject);
-  inTag.value = "";
+  if (inTag.value === "") {
+    alert("du måste skriva något");
+  } else {
+    let newItemObject = new ListItem(newTask);
+    theList.push(newItemObject);
+    inTag.value = "";
 
-  innerTag();
+    innerTag();
+  }
 }
 
 function innerTag() {
