@@ -5,22 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="/src/js/main.js" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Zen+Antique&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="sass/main.scss" />
     <title>Todo</title>
   </head>
     <h1>Todo-listan!</h1>
+    
     <div class="container">
-    <label for="additem"> Lägg till att göra här:</label>
-    <input type="text" id="additem" > 
-    <button type="button" id="btn-item">Lägg till</button>
+    <div class="todo-container">
 
     <h2>Att göra:</h2>
     <ul id="todolist">
     </ul>
+    <input type="text" id="additem" placeholder="lägg till här.."> 
+    <button type="button" id="btn-item">Lägg till</button>
+    </div>
+    <div class="completed-container">
+  
     <h2>Avslutade:</h2>
     <ul id="completed">
 
     </ul>
+    </div>
     </div>
   </body>
 </html>

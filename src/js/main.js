@@ -2,31 +2,12 @@ import { ListItem } from "./models/class";
 
 let theList = [];
 
-theList.push(new ListItem("Köp en ny dator", false));
-theList.push(new ListItem("Städa", false));
-
 let theCompletedList = [];
-
-function completedTask(listTask) {
-  let mylistindex = theList.indexOf(listTask);
-  theList.splice(mylistindex, 1);
-  theCompletedList.push(listTask);
-  innerTagCompleted();
-
-  innerTag();
-}
-function unCompletedTask(listTask) {
-  let mylistindex = theCompletedList.indexOf(listTask);
-  theCompletedList.splice(mylistindex, 1);
-  theList.push(listTask);
-  innerTagCompleted();
-  innerTag();
-}
 
 function addtolist() {
   let inTag = document.getElementById("additem");
   let newTask = inTag.value;
-  let newItemObject = new ListItem(newTask, false);
+  let newItemObject = new ListItem(newTask);
   theList.push(newItemObject);
   inTag.value = "";
 
@@ -51,6 +32,7 @@ function innerTag() {
     });
     todoTag.appendChild(listTag);
   }
+  localStorage.setItem("todolist", JSON.stringify(theList));
 }
 
 function innerTagCompleted() {
@@ -70,12 +52,58 @@ function innerTagCompleted() {
     listTag.appendChild(labelTag);
     completedTag.appendChild(listTag);
   }
+  localStorage.setItem("completelist", JSON.stringify(theCompletedList));
+}
+
+function completedTask(listTask) {
+  let mylistindex = theList.indexOf(listTask);
+  theList.splice(mylistindex, 1);
+  theCompletedList.push(listTask);
+
+  innerTagCompleted();
+
+  innerTag();
+}
+function unCompletedTask(listTask) {
+  let mylistindex = theCompletedList.indexOf(listTask);
+  theCompletedList.splice(mylistindex, 1);
+  theList.push(listTask);
+  innerTagCompleted();
+  innerTag();
+}
+
+function getListsFromLS() {
+  let listFromLS = JSON.parse(localStorage.getItem("todolist"));
+  for (let i = 0; i < listFromLS.length; i++) {
+    theList.push(new ListItem(listFromLS[i].title));
+  }
+  innerTag();
+
+  console.log(theList);
+}
+
+function getCompletedListFromLS() {
+  let completedFromLS = JSON.parse(localStorage.getItem("completelist"));
+  for (let i = 0; i < completedFromLS.length; i++) {
+    theCompletedList.push(new ListItem(completedFromLS[i].title));
+  }
+  innerTagCompleted();
+
+  console.log(theList);
 }
 
 function init() {
-  innerTag();
-
   document.getElementById("btn-item").addEventListener("click", addtolist);
+
+  if (localStorage.length > 0) {
+    getCompletedListFromLS();
+    getListsFromLS();
+  } else {
+    theList.push(new ListItem("Köp en ny dator"));
+    theList.push(new ListItem("Städa"));
+  }
+  innerTag();
+  innerTagCompleted();
 }
 
 init();

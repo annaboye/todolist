@@ -1,6 +1,5 @@
 export class ListItem {
-  constructor(title, checked) {
+  constructor(title) {
     this.title = title;
-    this.checked = checked;
   }
 }
