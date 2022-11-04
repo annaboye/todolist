@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="/src/js/main.js" type="module"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Zen+Antique&display=swap" rel="stylesheet">
@@ -14,15 +15,17 @@
     <h1>Todo-listan!</h1>
     
     <div class="container">
-    <div class="todo-container">
+    <div class="container__todo">
 
     <h2>Att göra:</h2>
+    <button type="button" id="btn-sort">a-ö <i class="bi bi-arrow-down"></i></button>
     <ul id="todolist">
     </ul>
     <input type="text" id="additem" placeholder="lägg till här.."> 
     <button type="button" id="btn-item">Lägg till</button>
+    
     </div>
-    <div class="completed-container">
+    <div class="container__completed">
   
     <h2>Avslutade:</h2>
     <ul id="completed">

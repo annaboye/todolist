@@ -14,11 +14,11 @@ function addtolist() {
     theList.push(newItemObject);
     inTag.value = "";
 
-    innerTag();
+    addTodoTag();
   }
 }
 
-function innerTag() {
+function addTodoTag() {
   let todoTag = document.getElementById("todolist");
   todoTag.innerHTML = "";
   for (let i = 0; i < theList.length; i++) {
@@ -47,6 +47,7 @@ function innerTagCompleted() {
     let checkBox = document.createElement("input");
     let listTag = document.createElement("li");
     checkBox.type = "checkbox";
+    checkBox.checked = true;
     labelTag.innerText = theCompletedList[i].title;
     checkBox.addEventListener("click", () => {
       unCompletedTask(theCompletedList[i]);
@@ -66,14 +67,14 @@ function completedTask(listTask) {
 
   innerTagCompleted();
 
-  innerTag();
+  addTodoTag();
 }
 function unCompletedTask(listTask) {
   let mylistindex = theCompletedList.indexOf(listTask);
   theCompletedList.splice(mylistindex, 1);
   theList.push(listTask);
   innerTagCompleted();
-  innerTag();
+  addTodoTag();
 }
 
 function getListsFromLS() {
@@ -81,7 +82,7 @@ function getListsFromLS() {
   for (let i = 0; i < listFromLS.length; i++) {
     theList.push(new ListItem(listFromLS[i].title));
   }
-  innerTag();
+  addTodoTag();
 
   console.log(theList);
 }
@@ -96,8 +97,26 @@ function getCompletedListFromLS() {
   console.log(theList);
 }
 
+function sortTheList() {
+  theList.sort((a, b) => {
+    let fa = a.title.toLowerCase(),
+      fb = b.title.toLowerCase();
+
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    return 0;
+  });
+
+  addTodoTag();
+}
+
 function init() {
   document.getElementById("btn-item").addEventListener("click", addtolist);
+  document.getElementById("btn-sort").addEventListener("click", sortTheList);
 
   if (localStorage.length > 0) {
     getCompletedListFromLS();
@@ -106,7 +125,7 @@ function init() {
     theList.push(new ListItem("Köp en ny dator"));
     theList.push(new ListItem("Städa"));
   }
-  innerTag();
+  addTodoTag();
   innerTagCompleted();
 }
 
