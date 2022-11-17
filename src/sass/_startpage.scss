@@ -19,7 +19,11 @@ button {
     background-color: rgba(233, 193, 92, 0.575);
   }
 }
-
+.bi {
+  &:hover {
+    cursor: pointer;
+  }
+}
 .container {
   display: flex;
   flex-direction: column;
