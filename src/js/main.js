@@ -33,7 +33,7 @@ function addTodoTag() {
     listTag.appendChild(checkBox);
     listTag.appendChild(labelTag);
     listTag.appendChild(deletebtn);
-    deletebtn.classList.add("bi", "bi-x");
+    deletebtn.classList.add("bi", "bi-x-square");
     deletebtn.addEventListener("click", () => {
       removeFromList(theList[i]);
     });
@@ -97,8 +97,8 @@ function init() {
   if (localStorage.length > 0) {
     getListsFromLS();
   } else {
-    theList.push(new ListItem("Köp en ny dator", false));
-    theList.push(new ListItem("Städa", false));
+    theList.push(new ListItem("portfolio", false));
+    theList.push(new ListItem("webshop", false));
   }
   addTodoTag();
 }
